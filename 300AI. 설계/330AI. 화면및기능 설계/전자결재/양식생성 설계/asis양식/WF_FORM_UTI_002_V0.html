@@ -1,0 +1,294 @@
+<tr>
+				<td colspan="6" style="border: 1px solid rgb(195, 198, 201); box-sizing: border-box; font-size: 12px; padding: 0px; height: 250px; min-height: 250px; vertical-align: top;">
+ 
+ <input type="hidden" value="editor" name="_editorName_">
+<textarea id="editor" name="editor" width="0" height="0" style="display:none;">&lt;p style="line-height: 150%; font-family: 'malgun gothic';"&gt;&lt;br&gt;&lt;/p&gt;
+</textarea>
+<span style="display:none;" id="EDITOR" uuid="7365ACE842D011F1B4A5F9E5E4E08D69"></span><script type="text/javascript">
+function getInitContent() {
+	return document.getElementById('editor').value;
+}
+//본문셋팅 및 본문이미지 정보 셋팅(Editor.java)
+function setEditorHtml(mode) {
+	var _oFrame = document.getElementById('editor1').contentWindow;
+	var _editorHtml = _oFrame.getContent();
+	document.getElementById('editor').value = _editorHtml;
+	if(mode != 'PREVIEW'){
+		document.getElementById('contentFileIdLists').value = document.getElementById('copyContentFileIdLists').value + _oFrame.getContentImgFileId();
+	}; 
+}
+function attachImage () {
+	uploadPhoto('setMultiImage');
+}
+function setMultiImage (tag, fileId) {
+	document.getElementById('editor1').contentWindow.insertHtmltag(tag, fileId);
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="robots" content="noindex">
+
+<div class="editor_wrap">
+
+
+<iframe src="/xclickr31_uti/thirdparty/editor/cross_4.6.0.26/index.jsp?editorName=editor1&amp;_tokenid=xwaIgsKGUrgSpppfFHvD/uOk8Fge9Ypgtrjd3A!!&amp;dragStartFunc=&amp;dragEndFunc=&amp;isShowTab=true&amp;initFunc=getInitContent" id="editor1" name="7365D3F942D011F1B4A5E37E0FD19BA0" scrolling="no" style="width:100%; height:500px;"></iframe>
+
+
+<div id="editorResizeBar" class="editor_resizebar" title="에디터 높이 조절"></div>
+
+<script type="text/javascript" src="/xclickr31_uti/common/js/editorresize.js?0.54_xclickstatic"></script>
+<script type="text/javascript">
+	initializeResizeEditor({ barId : "editorResizeBar", targetId : "editor1", defaultHeight : 500, minHeight : 100});
+</script>
+
+</div>
+
+
+
+<textarea id="editor1Tempcontents" style="width:0;height:0;display:none;"></textarea>
+<input type="hidden" id="editor1imgFileList">
+<input type="hidden" id="editor1imgFileId">
+<script type="text/javascript">
+	function changeEditor_editor1(type, btn){
+		//VER : REG_2015.05 , REFID : DEV150511_14, AUTHOR : ejlee
+		//에디터가 로딩이 완료되지 않은 경우 alert을 띄워 처리하지 않도록 함.
+		if(!isEditorLoadComplete){
+			alert(jQuery.getMessage("COMMON-000354"));
+			return;
+		}
+		var html = document.getElementById("editor1").contentWindow.getHtml();
+		var imgFileList = document.getElementById("editor1").contentWindow.getContentImgFileList();
+		var imgFileId = document.getElementById("editor1").contentWindow.getContentImgFileId();
+		jQuery('#editor1Tempcontents').val(html);
+		jQuery('#editor1imgFileList').val(imgFileList);
+		jQuery('#editor1imgFileId').val(imgFileId);
+		if(type==1 && !$(btn).hasClass("disabled")){
+			//VER : REG_2015.05 , REFID : DEV150511_14, AUTHOR : ejlee
+			//VER : REG_2015.11 , REFID : DEV1511_215, AUTHOR : SungYongJe
+			//하단에 위치할 경우 이미 로딩된 탭을 클릭 시 isEditorLoadComplete 값이 false로 되어 true 값으로 변경이 되지 않아 이후 처리가 불가하였기에 위치 이동함. 
+			isEditorLoadComplete = false;
+			document.getElementById("editor1").contentWindow.location.replace('/xclickr31_uti/thirdparty/editor/activesquare7/activesquareInc.jsp?editorName=editor1&_tokenid=xwaIgsKGUrgSpppfFHvD/uOk8Fge9Ypgtrjd3A!!&dragStartFunc=&dragEndFunc=&isShowTab=true&initFunc=geteditor1TempContent');
+			//jQuery('#namoTab').prop("disabled",'disabled');
+			//jQuery('#fckTab').prop("disabled",'');
+			jQuery('#editor1NAMOTab').addClass("disabled")
+											  .addClass("activeTab")
+											  .removeClass("inactiveTab");
+			jQuery('#editor1SCRIPTTab').removeClass("disabled")
+											 .removeClass("activeTab")
+											 .addClass("inactiveTab");
+			jQuery('#editor1DEXT5Tab').removeClass("disabled")
+											 .removeClass("activeTab")
+											 .addClass("inactiveTab");
+      // VER : REG_2017.01, REFID : REQ1325 AUTHOR : jhhan, 크로스 에디터 적용
+			jQuery('#editor1CROSSTab').removeClass("disabled")
+											 .removeClass("activeTab")
+											 .addClass("inactiveTab");
+		}else if(type==2 && !$(btn).hasClass("disabled")){
+			//VER : REG_2015.05 , REFID : DEV150511_14, AUTHOR : ejlee
+			//VER : REG_2015.11 , REFID : DEV1511_215, AUTHOR : SungYongJe
+			//하단에 위치할 경우 이미 로딩된 탭을 클릭 시 isEditorLoadComplete 값이 false로 되어 true 값으로 변경이 되지 않아 이후 처리가 불가하였기에 위치 이동함.
+			isEditorLoadComplete = false;
+			document.getElementById("editor1").contentWindow.location.replace('/xclickr31_uti/common/editor/xClickEditor.jsp?editorName=editor1&_tokenid=xwaIgsKGUrgSpppfFHvD/uOk8Fge9Ypgtrjd3A!!&dragStartFunc=&dragEndFunc=&isShowTab=true&initFunc=geteditor1TempContent');
+			//jQuery('#namoTab').prop("disabled",'');
+			//jQuery('#fckTab').prop("disabled",'disabled');
+			jQuery('#editor1NAMOTab').removeClass("disabled")
+												.removeClass("activeTab")
+												.addClass("inactiveTab");
+			jQuery('#editor1DEXT5Tab').removeClass("disabled")
+												.removeClass("activeTab")
+												.addClass("inactiveTab");
+			jQuery('#editor1SCRIPTTab').addClass("disabled")
+											 .removeClass("inactiveTab")
+											 .addClass("activeTab");
+			// VER : REG_2017.01, REFID : REQ1325 AUTHOR : jhhan, 크로스 에디터 적용
+			jQuery('#editor1CROSSTab').removeClass("disabled")
+											 .removeClass("activeTab")
+											 .addClass("inactiveTab");
+		}else if(type==3 && !$(btn).hasClass("disabled")){
+			//VER : REG_2015.05 , REFID : DEV150511_14, AUTHOR : ejlee
+			//VER : REG_2015.11 , REFID : DEV1511_215, AUTHOR : SungYongJe
+			//하단에 위치할 경우 이미 로딩된 탭을 클릭 시 isEditorLoadComplete 값이 false로 되어 true 값으로 변경이 되지 않아 이후 처리가 불가하였기에 위치 이동함.
+			isEditorLoadComplete = false;
+			document.getElementById("editor1").contentWindow.location.replace('/xclickr31_uti/thirdparty/editor/dext5/index.jsp?editorName=editor1&_tokenid=xwaIgsKGUrgSpppfFHvD/uOk8Fge9Ypgtrjd3A!!&dragStartFunc=&dragEndFunc=&isShowTab=true&initFunc=geteditor1TempContent');
+			//jQuery('#namoTab').prop("disabled",'');
+			//jQuery('#fckTab').prop("disabled",'disabled');
+			jQuery('#editor1NAMOTab').removeClass("disabled")
+												.removeClass("activeTab")
+												.addClass("inactiveTab");
+			jQuery('#editor1SCRIPTTab').removeClass("disabled")
+												.removeClass("activeTab")
+												.addClass("inactiveTab");
+			// VER : REG_2017.01, REFID : REQ1325 AUTHOR : jhhan, 크로스 에디터 적용
+			jQuery('#editor1DEXT5Tab').addClass("disabled")
+											 .removeClass("inactiveTab")
+											 .addClass("activeTab");
+			jQuery('#editor1CROSSTab').removeClass("disabled")
+											 .removeClass("activeTab")
+											 .addClass("inactiveTab");
+		}
+		// VER : REG_2017.01, REFID : REQ1325 AUTHOR : jhhan, 크로스 에디터 적용
+		else if(type==4 && !$(btn).hasClass("disabled")){
+			//VER : REG_2015.05 , REFID : DEV150511_14, AUTHOR : ejlee
+			//VER : REG_2015.11 , REFID : DEV1511_215, AUTHOR : SungYongJe
+			//하단에 위치할 경우 이미 로딩된 탭을 클릭 시 isEditorLoadComplete 값이 false로 되어 true 값으로 변경이 되지 않아 이후 처리가 불가하였기에 위치 이동함.
+			isEditorLoadComplete = false;
+			document.getElementById("editor1").contentWindow.location.replace('/xclickr31_uti/thirdparty/editor/cross_4.6.0.26/index.jsp?editorName=editor1&_tokenid=xwaIgsKGUrgSpppfFHvD/uOk8Fge9Ypgtrjd3A!!&dragStartFunc=&dragEndFunc=&isShowTab=true&initFunc=geteditor1TempContent');
+			//jQuery('#namoTab').prop("disabled",'');
+			//jQuery('#fckTab').prop("disabled",'disabled');
+			jQuery('#editor1NAMOTab').removeClass("disabled")
+												.removeClass("activeTab")
+												.addClass("inactiveTab");
+			jQuery('#editor1SCRIPTTab').removeClass("disabled")
+												.removeClass("activeTab")
+												.addClass("inactiveTab");
+			jQuery('#editor1DEXT5Tab').removeClass("disabled")
+											 .removeClass("activeTab")
+											 .addClass("inactiveTab");
+			jQuery('#editor1CROSSTab').addClass("disabled")
+											 .removeClass("inactiveTab")
+											 .addClass("activeTab");
+		}
+	}
+	
+	function geteditor1TempContent(){
+		return jQuery('#editor1Tempcontents').val();
+	}
+	function geteditor1ImgFileList(){
+		return jQuery('#editor1imgFileList').val();
+	}
+	function geteditor1ImgFileId(){
+		return jQuery('#editor1imgFileId').val();
+	}
+	function openWord(){
+		var editorObj = document.getElementById("editor1");
+		var content = editorObj.contentWindow.getHtml();
+		var editorType = "";
+		if(editorObj.contentWindow.location.href.indexOf("activesquareInc")> -1){
+			editorType = "NAMO";
+		}else{
+			editorType = "SCRIPT";
+		}
+		
+		content = stringReplace(content,"UTF-8","unicode");
+		content = stringReplace(content,"utf-8","unicode");
+		
+		//VER : REG_2015.11 , REFID : REQ897 , AUTHOR : hyungyu, Song
+		//워드편집기 멀티 대응패치. DocumentMgrApplet.java 가 같이 패치되어야 제대로 동작함. 
+		if(xClickTop.document.getElementById("ifrOle")){
+			xClickTop.document.getElementById("ifrOle").contentWindow.openWord(content, _weburl, _webapp, editorType, editorObj);
+		}else if(xClickTop.opener){
+			xClickTop.opener.xClickTop.document.getElementById("ifrOle").contentWindow.openWord(content, _weburl, _webapp, editorType, editorObj);
+		}
+	}
+	
+	/**
+	 * 사진첨부 팝업에서 호출할 Callback function
+	 */
+	function attachImage() {
+		uploadPhoto('setMultiImage'); // common.js
+	}
+	function setMultiImage(tag, fileId) {
+		// editor에 이미지 삽입
+		var editorObj = document.getElementById("editor1");
+		editorObj.contentWindow.insertHtmltag(tag, fileId);
+	}
+	
+    
+    //초기 데이터 기억 S.H.Byun
+    function initializeContentValue(html){
+    	jQuery(window).on("beforeunload", OnBeforeUnLoad)
+		editorInitializeContent = html;
+    }
+    
+    // the OnBeforeUnLoad method will only be called in Google Chrome and Safari
+    function OnBeforeUnLoad () {
+     	if(document.getElementById("editor1")){
+	    	var curEditorEndContent = document.getElementById("editor1").contentWindow.getBodyContent();
+	    	//realPageExistYn : 실수로 벗어나고
+	    	//curEditorEndContent != editorInitializeContent : 수정을 하였고
+	    	//editorInitializeContent != "" : 에디터가 완전히 로딩이 되었고.
+	    	//parent.realPageExistYn : 결재 멀티 기안의 경우 2안 이후 editor에서 1안 변수값으로 한번더 체크한다.
+	    	if(realPageExistYn == "N" && curEditorEndContent != editorInitializeContent && editorInitializeContent != ""){
+	    		if( parent.realPageExistYn == "N"){
+		        	return jQuery.getMessage("COMMON-000351", "");
+	    		}
+	    	}
+     	}  
+    }
+    
+</script>
+<style type="text/css">
+	div.activeTab {
+		padding-top : 3px;
+		padding-left : 8px;
+		padding-right : 8px;
+		text-align : center;
+		height : 20px;
+		background-color : #fff;
+		cursor:default;
+		border-top: 1px solie #fff;
+		border-right:1px solid #999;
+		border-bottom:1px solid #999;
+		border-left:1px solid #999;
+		color : #888;
+	}
+	div.inactiveTab {
+		margin-top:1px;
+		padding-top : 3px;
+		padding-left : 8px;
+		padding-right : 8px;
+		text-align : center;
+		height : 20px;
+		background-color : #f4f4f4;
+		color : #bbb;
+		cursor:pointer;
+		border-right:1px solid #ddd;
+		border-bottom:1px solid #ddd;
+		border-left:1px solid #ddd;
+		border-top:1px solid #999;
+	}
+	div.inactiveTab.disabled {
+		cursor : text;
+	}
+	
+	div.editorGap {
+		padding-top : 3px;	
+		height : 20px;
+		color : #bbb;
+		border-top:1px solid #999;
+	}
+</style>
+
+</td>
+			</tr>
